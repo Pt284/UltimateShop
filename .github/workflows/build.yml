@@ -5,15 +5,18 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # 2️⃣ Java 21 + Maven cache
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
@@ -21,14 +24,27 @@ jobs:
           java-version: 21
           cache: maven
 
+      # 3️⃣ Maven memory (giống MythicLib)
+      - name: Configure Maven memory
+        run: |
+          echo "MAVEN_OPTS=-Xmx4G -XX:+UseG1GC" >> $GITHUB_ENV
+
+      # 4️⃣ Verify system libs (giữ lại, rất quan trọng)
       - name: Verify system libs
         run: |
           echo "Listing core/lib:"
           ls -l core/lib || exit 1
 
-      - name: Build with Maven
-        run: mvn -B clean package -DskipTests
+      # 5️⃣ Build CHỈ plugin (FAST)
+      - name: Build UltimateShop plugin only
+        run: |
+          mvn clean package \
+            -pl plugin \
+            -am \
+            -DskipTests \
+            -T 1
 
+      # 6️⃣ Upload jar
       - name: Upload plugin jar
         uses: actions/upload-artifact@v4
         with:
