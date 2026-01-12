@@ -56,12 +56,12 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Spigot module -->
+        <!-- Spigot module
         <dependency>
             <groupId>cn.superiormc</groupId>
             <artifactId>spigot</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency> -->
 
         <!-- Paper module-->
         <dependency>
