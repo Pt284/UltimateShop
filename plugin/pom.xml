@@ -14,6 +14,33 @@
 
     <build>
         <finalName>${project.name}-${project.version}</finalName>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.4.1</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <relocations>
+                                    <relocation>
+                                        <pattern>org.bstats</pattern>
+                                        <shadedPattern>cn.superiormc.ultimateshop.bstats</shadedPattern>
+                                    </relocation>
+                                    <relocation>
+                                        <pattern>com.zaxxer.hikari</pattern>
+                                        <shadedPattern>cn.superiormc.ultimateshop.libs.hikari</shadedPattern>
+                                    </relocation>
+                                </relocations>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
     </build>
 
     <artifactId>plugin</artifactId>
@@ -36,12 +63,12 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Paper module
+        <!-- Paper module-->
         <dependency>
             <groupId>cn.superiormc</groupId>
             <artifactId>paper</artifactId>
             <version>${project.version}</version>
-        </dependency>-->
+        </dependency>
 
         <!-- Paper API (provided at runtime by server)
         <dependency>
