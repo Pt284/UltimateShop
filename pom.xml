@@ -10,7 +10,6 @@
 
     <modules>
         <module>core</module>
-        <module>paper</module>
         <module>spigot</module>
         <module>plugin</module>
     </modules>

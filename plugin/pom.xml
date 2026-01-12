@@ -36,19 +36,19 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Paper module -->
+        <!-- Paper module
         <dependency>
             <groupId>cn.superiormc</groupId>
             <artifactId>paper</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
 
-        <!-- Paper API (provided at runtime by server) -->
+        <!-- Paper API (provided at runtime by server)
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.21.11-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>provided</scope> -->
         </dependency>
     </dependencies>
 </project>
